@@ -10,7 +10,7 @@ const collectEmployees = function() {
   const firstName = prompt("What is employee first name");
   const lastName = prompt("What is employee last name");
   const salary = parseInt(prompt("What is a employee salary"), 10)                                                                                                                                                                                                                                                                ;
-  employees.push(employee);
+  employees.push({ firstName, lastName, salary });
   employee = confirm("do want to add another employee")
   }
   return employees;
@@ -19,6 +19,12 @@ const collectEmployees = function() {
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
+ const averageSalary = employeesArray.reduce((sum, employee) => sum + employee.salary, 0) / employeesArray.length;
+ 
+ console.log(`${averageSalary.toLocaleString("en-US", {
+  style: "currency",
+  currency: "USD"
+})};`)
 }
 
 // Select a random employee
